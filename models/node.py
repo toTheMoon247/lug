@@ -1,7 +1,7 @@
 class Node:
 
 	def __init__(self, row, level, capacity, target_min, target_max, control_target, water_level=0, valve_state='close'):
-		self.row = self.row_number_to_char(row)
+		self.row = row
 		self.level = level
 		self.capacity = capacity,
 		self.target_min = target_min
@@ -9,7 +9,7 @@ class Node:
 		self.control_target = control_target
 		self.water_level = water_level
 		self.valve_state = valve_state
-		self.label = self.set_label(self.row, self.level)
+		self.label = self.set_label(self.row_number_to_char(self.row), self.level)
 
 	def set_label(self, row, level):
 		if level == 'source': 
