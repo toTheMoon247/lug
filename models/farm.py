@@ -45,9 +45,9 @@ class Farm:
 		self.build_edges_from_source()
 
 		for level in self.nodes:
-			input(level)
+			input(f'level = {level}')
 			for node in level:
-				input(node)
+				input(f'node = {node}')
 				# Build edges from node out to all nodes in its level and in lower levels
 				self.build_edges_from(node)
 
@@ -56,8 +56,17 @@ class Farm:
 
 	def build_edges_from(self, node):
 		# build edges to the same level nodes
+		level_index = 1
+		for level in self.nodes:
+			# input(f'# build_edges_from # level_index = {level_index}, node.level = {node.level}')
+			level_index += 1
+			for current_node in level:
+				self.G.add_edge(self.source, current_node)
+
 		# build edges for each lower level nodes
+		
 		# build edges to the sink
+		input(f'build edges from {node} to the sink')
 		self.G.add_edge(node, self.sink)
 		# input(f'build_edges_from: row = {node.row}, level = {node.level}')
 		return
