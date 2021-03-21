@@ -41,7 +41,17 @@ class Node:
 		    }
 		return converter[row]
 
-# a1 = Node('A', 1, 100, 20, 30, 'empty')
+	def print_status(self):
+		print(f'{self.label} status:')
+		print(f'control_target = {self.control_target}')
+		print(f'water_level = {self.water_level}')
+		print(f'valve_state = {self.valve_state}')
+
+	def get_label(self):
+		return self.label
+
+a1 = Node(1, 1, 100, 20, 30, 'empty')
+a1.print_status()
 # source = Node('A', 'source', 100, 20, 30, 'empty')
 # a1 = Node(3, 1, 100, 20, 30, 'empty')
 # a1.print_label()

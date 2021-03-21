@@ -3,6 +3,19 @@ import matplotlib
 import networkx as nx
 from node import Node
 
+def print_node_status(node):
+	node.print_status()
+	return
+
+
+def letters_to_numbers(c):
+	return ord(c) - 64
+
+
+def numbers_to_letters(n):
+	return chr(ord('@')+ n) - 26
+
+
 class Farm:
 
 	def __init__(self, levels, rows):
@@ -94,7 +107,32 @@ class Farm:
 		print(self.sink)
 
 
+
+	### Public interface ###
+	########################
+	
+	# Function gets bed(node) label and return the node
+	def get_node_by_label(self, node_label):
+		if node_label == 'tank':
+			return self.source
+		if node_label == 'sump':
+			return self.sink
+		level = int(letters_to_numbers(node_label[0]))
+		row = int(node_label[1])
+		node = self.nodes[level - 1][row - 1]
+		return node
+
+
+	def update_target(node_label, target):
+		pass
+
 farm = Farm(2, 2)
-farm.print_farm_bluebrint()
-input('\nand now the DiGraph...')
-farm.print_farm()
+input('printing nodes...')
+# print(farm.nodes[0][0])
+node = farm.get_node_by_label('sump')
+node.print_status()
+# node.print_node_status
+# print_node_status(farm.source)
+# farm.print_farm_bluebrint()
+# input('\nand now the DiGraph...')
+# farm.print_farm()
