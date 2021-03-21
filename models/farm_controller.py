@@ -27,6 +27,9 @@ def process_a_message(self, message):
 
 
 def empty(self, node, target):
+	# update the bed target
+	# check if the bed is empty
+	# if the bed is not empty, publish 'open' to the broker 
 	pass
 
 
