@@ -13,14 +13,17 @@ class Farm:
 		self.source = None
 		self.sink = None
 
+		self.init_nodes()
+		self.init_edges()
+
 	def init_nodes(self):
 		
+		print('Building the nodes...\n')
 		# Outsource me to add_node_to_farm(level, row, 'source')
 		source = Node(1, 'source', 204, 0, 204, None)
 		self.G.add_node(source)
 		self.source = source
 		
-		input('Building the levels...')
 
 		# Outsoure me to a function
 		nodes = []
@@ -41,40 +44,38 @@ class Farm:
 		self.sink = sink
 
 	def init_edges(self):
+		print('Building the edges...')
+		print('---------------------')
 		# Build edges from source to all nodes
 		self.build_edges_from_source()
 
+		# For each node build the edges that are going out from it 
 		for level in self.nodes:
-			input(f'level = {level}')
 			for node in level:
-				input(f'node = {node}')
-				# Build edges from node out to all nodes in its level and in lower levels
 				self.build_edges_from(node)
 
 		return
 
 
 	def build_edges_from(self, node):
-		# build edges to the same level nodes
-		level_index = 1
+		# build edges to the same level and lower nodes
 		for level in self.nodes:
-			# input(f'# build_edges_from # level_index = {level_index}, node.level = {node.level}')
-			level_index += 1
 			for current_node in level:
-				self.G.add_edge(self.source, current_node)
-
-		# build edges for each lower level nodes
-		
+				if node != current_node and node.level >= current_node.level:
+					self.G.add_edge(node, current_node)
+					print(f'added edge e({node},{current_node})')
+	
 		# build edges to the sink
-		input(f'build edges from {node} to the sink')
+		print(f'added edge e({node}, sink)\n')
 		self.G.add_edge(node, self.sink)
-		# input(f'build_edges_from: row = {node.row}, level = {node.level}')
 		return
 
 	def build_edges_from_source(self):
 		for level in self.nodes:
 			for node in level:
 				self.G.add_edge(self.source, node)
+
+		self.G.add_edge(self.source, self.sink)
 		return
 
 	def print_farm(self):
@@ -82,7 +83,18 @@ class Farm:
 		pylab.show()
 		return
 
+	def print_farm_bluebrint(self):
+		input('# Farm Blueprint #')
+		print('------------------')
+		nodes = self.nodes.copy()
+		nodes.reverse()
+		print(self.source)
+		for level in nodes:
+			print(level)
+		print(self.sink)
+
+
 farm = Farm(2, 2)
-farm.init_nodes()
-farm.init_edges()
+farm.print_farm_bluebrint()
+input('\nand now the DiGraph...')
 farm.print_farm()

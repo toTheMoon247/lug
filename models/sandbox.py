@@ -1,20 +1,11 @@
 import pylab
 import matplotlib 
 import networkx as nx
+from datetime import datetime
+import time
 
-class Person(object):
-	"""docstring for Person"""
-	def __init__(self, arg):
-		super(Person, self).__init__()
-		self.arg = arg
-
-	def __repr__(self):
-		input('Is it printing the name or the adress in the memory...?')
-		return self.arg
-
-dan = Person('Dan')
-# print(dan)
-G = nx.DiGraph()
-G.add_node(dan)
-nx.draw(G, with_labels = 1)
-pylab.show()
+sample_1 = datetime.now()
+time.sleep(2)
+sample_2 = datetime.now()
+secs = (sample_2 - sample_1).total_seconds()
+print(int(secs))
