@@ -1,5 +1,10 @@
 from communicator import Communicator
 
+
+# these are quick & dirty unit tests for Communicator class (see communicator.py)
+# not by the book, but good enough for now
+
+
 input(f'Welcome to communicator unit tests. Press any key to continue...')
 farm_controller = 'mock'
 c = Communicator(farm_controller)
