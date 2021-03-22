@@ -8,7 +8,7 @@ class FarmController:
 		self.farm = farm
 		self.client = client
 		
-		# TODO test
+		# TODO add logger and communicator
 		self.logger = None
 		self.communicator = None
 
@@ -26,42 +26,55 @@ def process_a_message(self, message):
 	bed  = self.communicator.extract_bed_label_from_msg(message)
 	value  = self.communicator.extract_value_label_from_msg(message)
 	
-	if self.communicator.is_water_level_msg(message):
-		return self.update_bed_level_and_publish_accordingly(bed, value)
+	if self.communicator.is_empty_bed_msg(message):
+		return empty_bed(bed, value)
 
-	if self.communicator.is_target_message(message):
-		return self.set_target_bed_and_publish_accordingly(bed, value)
+	if self.communicator.is_fill_bed_msg(message):
+		return fill_bed(bed, value)
 
-
-	# if it's an action message:
-		# Empty ---> (1) check if it's empty
-		#			 (2) if not - empty the bed
-
-		# Fill  ---> (1) check if bed is full
-		# 			 (2) if not fill it (publish 'open' to the broker)
-
-	# if it's a level message ---> (1) update_level
-	#							   (2) if level is in the range('in target') switch off (publish 'close' to the broker)
+	if self.communicator.is_update_water_level_msg(message):
+		return update_water_level(bed, value)
+		is_bed_in_correct_state = self.update_water_level(bed, value)
 
 
-def set_target_bed_and_publish_accordingly(self, bed, target):
+########################### PRIVATE ######################################################
+
+
+def empty_bed(self, bed, target):
 	# update the bed target (just in case)
-	self.farm.update_target(bed, target)
+	self.update_target(bed, target)
 	# check if the bed is empty
-	if self.farm.is_bed_target(bed, target) == False:
-		self.communicator.publish(bed, 'open')
+	if self.farm.is_bed_empty(bed) == False:
+		self.close_valve(bed)
 	# if the bed is not empty, publish 'open' to the broker 
 	return
 
 
-def update_bed_level_and_publish_accordingly(self, node, level):
+def fill_bed(self, bed, target):
+	# update the bed target
+	self.update_target(bed, target)
+	# if the bed water level is not full open valve(and in the future:open the valve in case it's not opened)
+	if self.farm.is_water_level_in_target(bed) == False:
+		self.open_valve(bed)
+	return
+
+
+def update_water_level(self, bed, level):
 	# update the farm with the current level
-	self.farm.update_bed_water_level(node, leve)
-	if farm.bed_is_full(node) == True
-		self.communicator.publish(node, 'close')
-	# check if the bed is in the range
-	# if it's in the range publish 'close'
+	self.farm.update_bed_water_level(bed, level)
+	# if bed is full --> close the valve
+	if self.farm.is_water_level_in_target(bed) == True:
+		self.close_valve(bed)
+	return
 
 
-def publish:
-	pass
+def open_valve(bed):
+	return self.set_valve(bed, 'open')
+
+
+def close_valve(bed):
+	return self.set_valve(bed, 'close')
+
+
+def set_valve(bed, valve_state):
+	return self.communicator.publish(bed, valve_state)
