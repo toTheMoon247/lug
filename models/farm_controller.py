@@ -1,4 +1,3 @@
-
 from farm import Farm
 
 class FarmController:
