@@ -26,25 +26,31 @@ def process_a_message(self, message):
 	pass
 
 
-def empty(self, node, target):
-	# update the bed target
+def empty_bed(self, node, target):
+	# update the bed target (just in case)
 	self.farm.update_target(node, target)
 	# check if the bed is empty
-	if self.farm.is_empty(node) == False:
-		self.publish(node, 'open')
+	if self.farm.bed_is_empty(node) == False:
+		self.communicator.publish(node, 'open')
 	# if the bed is not empty, publish 'open' to the broker 
-	pass
+	return
 
 
-def fill(self, node, target):
+def fill_bed(self, node, target):
 	# update the bed target
+	self.farm.update_target(node, target)
 	# check the bed is full
+	if self.farm.bed_is_full(node) == False:
+		self.communicator.publish(node, 'open')
 	# if not full publish 'open' to the broker
 	return
 
 
-def update_level(self, node, level):
+def update_bed_level(self, node, level):
 	# update the farm with the current level
+	self.farm.update_bed_level(node, leve)
+	if farm.bed_is_full(node) == true
+		self.communicator.publish(node, 'open')
 	# check if the bed is in the range
 	# if it's in the range publish 'close'
 
