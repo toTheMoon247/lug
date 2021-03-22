@@ -22,8 +22,8 @@ def process_a_message(self, message):
 		return
 
 	# for all other messages: fetch the bed label and the message value
-	bed  = self.communicator.extract_bed_label_from_msg(message)
-	value  = self.communicator.extract_value_label_from_msg(message)
+	bed  = self.communicator.get_bed_label(message)
+	value  = self.communicator.get_message_value(message)
 	
 	if self.communicator.is_empty_bed_msg(message):
 		return empty_bed(bed, value)
