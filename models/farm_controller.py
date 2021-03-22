@@ -34,7 +34,6 @@ def process_a_message(self, message):
 
 	if self.communicator.is_update_water_level_msg(message):
 		return update_water_level(bed, value)
-		is_bed_in_correct_state = self.update_water_level(bed, value)
 
 
 ########################### PRIVATE ######################################################
