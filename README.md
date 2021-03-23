@@ -47,4 +47,7 @@ app
     |    └── communicator.py
     |    └── client.py
     |    └── utils.py
+    |
+    ├── sam-client.py
+
 ```
