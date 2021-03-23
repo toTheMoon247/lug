@@ -53,6 +53,5 @@ app
     ├── sam-client.py
 
 ```
-<span style="color:blue">Note: Currently I still have issues with creating the packages properly. 
-Until I will solve the issues all the files are under model folder</span>.
-<span style="color:blue">some *This is Blue italic.* text</span>
+*Note: Currently I still have issues with creating the packages properly. 
+Until I will solve the issues all the files are under model folder*
