@@ -26,7 +26,7 @@ the FarmController code kept without changes. Changes will be limited to the com
 Farm model is a model of a vertical form. It provides the controller info about the farm.
 The farm model holds 2D list of the beds.
 The farm also holds a DiGraph(python implemantation of directional graph).
-The purpose of holding a directional graph is to help in finding paths in the farm regarding the water flow. 
+The purpose of holding a directional graph is to help in finding water flow paths in the farm. 
 
 ## Node Model
 Node model is modeling a bed in a vertical farm. The model provides the controller information about the bed status such as: water_level, valve_state etc.
