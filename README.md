@@ -39,12 +39,12 @@ app
     |   └── __init__.py
     │   └── farm__controller.py
     │   
-    └── models
-        └── __init__.py
-        └── farm.py
-        └── node.py
-    └── services
-        └── communicator.py
-        └── client.py
-        └── utils.py
+    ├── models
+    |    └── __init__.py
+    |    └── farm.py
+    |    └── node.py
+    ├── services
+    |    └── communicator.py
+    |    └── client.py
+    |    └── utils.py
 ```
