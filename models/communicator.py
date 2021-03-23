@@ -3,8 +3,17 @@
 class Communicator:
 
 
-	def __init__(self, farm_controller):
-		self.farm_controller = farm_controller
+	def __init__(self, client):
+		# if you want to test farm_controller ----> use mock client in the communicator
+		self.client = client
+		# i am not sure that communicator need to hold farm_controller. 
+		# for now i will keep it commented
+		# self.farm_controller = farm_controller 
+
+
+	# message: sam/meta/score 0
+	def is_meta_msg(self, message):
+		return self.message_topic(message, 1) == 'meta' 
 
 
 	# message: sam/bed-B2/valve open
@@ -34,9 +43,25 @@ class Communicator:
 		return message.split()[2]
 
 
+	# TODO: refactor this function. it is not well-written
 	def get_bed_label(self, message):
-		return self.message_topic(message, 1)
+		full_label = self.message_topic(message, 1)
+		if full_label[0] == 'b':
+			return f'{full_label[4]}{full_label[5]}'
+		if full_label == 'tank' or full_label == 'sump':
+			return full_label
 
+
+	def set_bed_full_label(self, bed_label):
+		if bed_label == 'tank' or bed_label == 'sump':
+			return bed_label
+
+		return f'bed-{bed_label}'
+
+
+	def open_valve(self, bed_label, valve_state):
+		full_label = self.set_bed_full_label(bed_label) 
+		return self.client.publish(full_label, valve_state)
 
 	################# PRIVATE ##########################
 	

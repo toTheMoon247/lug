@@ -3,15 +3,18 @@ import matplotlib
 import networkx as nx
 from node import Node
 
+# TODO: outsource me to utils
 def print_node_status(node):
 	node.print_status()
 	return
 
 
+# TODO: outsource me to utils
 def letters_to_numbers(c):
 	return ord(c) - 64
 
 
+# TODO: outsource me to utils
 def numbers_to_letters(n):
 	return chr(ord('@')+ n) - 26
 
@@ -110,27 +113,25 @@ class Farm:
 
 	### Public interface ###
 	########################
-	
+
 	# Function gets bed(node) label and return the node
+	# BUG: FIX ME! label 'A2' returns node 'B1'
 	def get_node_by_label(self, node_label):
 		if node_label == 'tank':
 			return self.source
 		if node_label == 'sump':
 			return self.sink
-		level = int(letters_to_numbers(node_label[0]))
-		row = int(node_label[1])
+		level = int(node_label[1])
+		row = int(letters_to_numbers(node_label[0]))
 		node = self.nodes[level - 1][row - 1]
 		return node
 
 
-	def update_target(node_label, target):
-		pass
-
-farm = Farm(2, 2)
-input('printing nodes...')
+# farm = Farm(2, 2)
+# input('printing nodes...')
 # print(farm.nodes[0][0])
-node = farm.get_node_by_label('sump')
-node.print_status()
+# node = farm.get_node_by_label('sump')
+# node.print_status()
 # node.print_node_status
 # print_node_status(farm.source)
 # farm.print_farm_bluebrint()

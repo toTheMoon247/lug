@@ -47,11 +47,31 @@ class Node:
 		print(f'water_level = {self.water_level}')
 		print(f'valve_state = {self.valve_state}')
 
+
+############## PUBLIC Interface ###########################
 	def get_label(self):
 		return self.label
 
-a1 = Node(1, 1, 100, 20, 30, 'empty')
-a1.print_status()
+
+	def set_control_target(self, target):
+		self.control_target = target
+		return True
+
+
+	def is_empty(self):
+		return self.water_level == 0
+
+
+	def is_water_level_in_target(self):
+		return self.water_level >= self.target_min and self.water_level <= self.target_max
+
+
+	def set_water_level(self, water_level):
+		self.water_level = water_level
+		return True
+
+# a1.print_label()
+# a1 = Node(1, 1, 100, 20, 30, 'empty')
+# a1.print_status()
 # source = Node('A', 'source', 100, 20, 30, 'empty')
 # a1 = Node(3, 1, 100, 20, 30, 'empty')
-# a1.print_label()
