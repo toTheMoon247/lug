@@ -33,8 +33,8 @@ Node model is modeling a bed in a vertical farm. The model provides the controll
 
 # Folders and files structure
 The folders structure of the project should be as follow:
-
-
+*Note: Currently I still have issues with creating the packages properly. 
+Until I will solve the issues all the files are under model folder*
 ```
 app
     ├── controller
@@ -50,8 +50,22 @@ app
     |    └── client.py
     |    └── utils.py
     |
+    ├── tests
+    |    └── unit_tests_communicator.py
+    |    └── unit_tests_farm_controller.py
+    |
     ├── sam-client.py
 
 ```
-*Note: Currently I still have issues with creating the packages properly. 
-Until I will solve the issues all the files are under model folder*
+# Tests
+Currently there are tests for farm_controller and the communicator.
+The tests are quick & dirty unit_tests 
+
+# Issues
+
+1. Issue with the packages.
+2. The MQTT client - I have to improve my understanding
+3. Unit tests. Currently there are minimal tests for necessary parts of the code, and they are not 'by the book'
+4. Styling: I need to review the code and adjust it according PEP-8 code styling and convention
+5. Node Model: The model is functional. There are some parts of the code that are not well-written and need to be removed 
+
