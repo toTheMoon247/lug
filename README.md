@@ -53,5 +53,6 @@ app
     ├── sam-client.py
 
 ```
-Note: Currently I still have issues with creating the packages properly. 
-Until I will solve the issues all the files are under model folder<span style="color:red">some *red* text</span>.
+<span style="color:blue">Note: Currently I still have issues with creating the packages properly. 
+Until I will solve the issues all the files are under model folder</span>.
+
