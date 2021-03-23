@@ -33,6 +33,8 @@ Node model is modeling a bed in a vertical farm. The model provides the controll
 
 # Folders and files structure
 The folders structure of the project should be as follow:
+
+
 ```
 app
     ├── controller
@@ -51,3 +53,5 @@ app
     ├── sam-client.py
 
 ```
+Note: Currently I still have issues with creating the packages properly. 
+Until I will solve the issues all the files are under model folder<span style="color:red">some *red* text</span>.
