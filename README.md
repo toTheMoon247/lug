@@ -12,7 +12,8 @@ When writing the code I followed the SOLID software design principles:
 1. Single Responsibility Principle
 2. Entities Open for extension, Close to modification
 3. Liskov substitution principle (I didn't had to use inhertiance during this test)
-4.  
+4. Interface segregation principle
+5. Dependency inversion principle
 
 # Structure
 This is a brief of the code structure.
