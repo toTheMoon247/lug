@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 ## This is a technical task that I made for LettUs Grow
-=======
+
 # Control the filling and draining of beds in vertical farm
 This project simulates controlling the filling and draining in a [vertical farm](https://en.wikipedia.org/wiki/Vertical_farming).
 The filling and draining executed through opening and closing valves of beds.
