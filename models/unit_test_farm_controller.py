@@ -14,7 +14,9 @@ class MockClient:
 
 
 	def publish(self, message_topic, message_payload):
-		print(f'\nvalve {message_topic} successfully set to {message_payload}\n')
+		print(f'the message that the client will send is: {message_topic} {message_payload}')
+		# print(f'\nvalve {message_topic} successfully set to {message_payload}\n')
+		return
 
 
 # these are quick & dirty unit tests for farm controller

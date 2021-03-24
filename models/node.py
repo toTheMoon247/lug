@@ -1,3 +1,18 @@
+# TODO: outsource me to utils
+def print_node_status(node):
+	node.print_status()
+	return
+
+
+# TODO: outsource me to utils
+def letters_to_numbers(c):
+	return ord(c) - 64
+
+
+# TODO: outsource me to utils
+def numbers_to_letters(n):
+	return chr(ord('@')+ n)
+
 class Node:
 
 	def __init__(self, row, level, capacity, target_min, target_max, control_target, water_level=0, valve_state='close'):
@@ -9,7 +24,8 @@ class Node:
 		self.control_target = control_target
 		self.water_level = water_level
 		self.valve_state = valve_state
-		self.label = self.set_label(self.row_number_to_char(self.row), self.level)
+		self.label = self.set_label(numbers_to_letters((self.row)), self.level)
+
 
 	def set_label(self, row, level):
 		if level == 'source': 
@@ -18,28 +34,14 @@ class Node:
 			return f'sink'
 		return f'{row}{level}'
 
+
 	def __str__(self):
 		return self.label
+
 
 	def __repr__(self):
 	    return self.__str__()
 
-	def row_number_to_char(self, row):
-		converter = {
-		        1: "A",
-		        2: "B",
-		        3: "C",
-		        4: "D",
-		        5: "E",
-		        6: "F",
-		        7: "G",
-		        8: "H",
-		        9: "I",
-		        10: "J",
-		        11: "K",
-		        12: "L"
-		    }
-		return converter[row]
 
 	def print_status(self):
 		print(f'{self.label} status:')
@@ -54,6 +56,7 @@ class Node:
 
 
 	def set_control_target(self, target):
+		print(f'Node/set_control_target ----> I am updating the target to be {target}')
 		self.control_target = target
 		return True
 
@@ -63,15 +66,15 @@ class Node:
 
 
 	def is_water_level_in_target(self):
-		return self.water_level >= self.target_min and self.water_level <= self.target_max
-
+		level = int(self.water_level)
+		is_in_target = level >= self.target_min and level <= self.target_max
+		print(f'Node/set_control_target ----> I am checking if water_level in target for A1. result = {is_in_target}')
+		return is_in_target
 
 	def set_water_level(self, water_level):
+		print(f'Node/set_control_target ----> I am updating the water level to {water_level}')
 		self.water_level = water_level
 		return True
 
-# a1.print_label()
-# a1 = Node(1, 1, 100, 20, 30, 'empty')
-# a1.print_status()
-# source = Node('A', 'source', 100, 20, 30, 'empty')
-# a1 = Node(3, 1, 100, 20, 30, 'empty')
+	def get_water_level(self):
+		return self.water_level

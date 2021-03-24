@@ -60,8 +60,8 @@ class Farm:
 		self.sink = sink
 
 	def init_edges(self):
-		print('Building the edges...')
-		print('---------------------')
+		# print('Building the edges...') # debug
+		# print('---------------------') # debug
 		# Build edges from source to all nodes
 		self.build_edges_from_source()
 
@@ -79,10 +79,10 @@ class Farm:
 			for current_node in level:
 				if node != current_node and node.level >= current_node.level:
 					self.G.add_edge(node, current_node)
-					print(f'added edge e({node},{current_node})')
+					# print(f'added edge e({node},{current_node})') # debug
 	
 		# build edges to the sink
-		print(f'added edge e({node}, sink)\n')
+		# print(f'added edge e({node}, sink)\n') # debug
 		self.G.add_edge(node, self.sink)
 		return
 
@@ -127,13 +127,8 @@ class Farm:
 		return node
 
 
-# farm = Farm(2, 2)
-# input('printing nodes...')
-# print(farm.nodes[0][0])
-# node = farm.get_node_by_label('sump')
-# node.print_status()
-# node.print_node_status
-# print_node_status(farm.source)
+# farm = Farm(4, 4)
+# input('printing the farm blueprint...')
 # farm.print_farm_bluebrint()
 # input('\nand now the DiGraph...')
 # farm.print_farm()
