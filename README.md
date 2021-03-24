@@ -8,7 +8,7 @@ The communication is carried out using MQTT protocol(an implemantation of a publ
 
 # Motivation
 This project done as a technical task to review my skills. 
-When writing the code I followed the SOLID software design principles:
+When writing the code I followed the **SOLID** software design principles:
 1. Single Responsibility Principle
 2. Entities Open for extension, Close to modification
 3. Liskov substitution principle (I didn't had to use inhertiance during this test)
