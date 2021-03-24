@@ -47,12 +47,17 @@ app
     |    └── __init__.py
     |    └── farm.py
     |    └── node.py
-    ├── services
     |    └── communicator.py
-    |    └── client.py
+    |
+    ├── services
+    |    └── __init__.py
+    |    └── mqtt_client.py
     |    └── utils.py
+    |    └── logger.py
+    |    └── debugger.py
     |
     ├── tests
+    |    └── __init__.py
     |    └── unit_tests_communicator.py
     |    └── unit_tests_farm_controller.py
     |
