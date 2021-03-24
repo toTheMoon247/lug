@@ -32,6 +32,9 @@ class Farm:
 		self.init_nodes()
 		self.init_edges()
 
+		self.muted = True
+		self.temporarily_source = None
+
 	def init_nodes(self):
 		
 		print('Building the nodes...\n')
@@ -110,6 +113,13 @@ class Farm:
 		print(self.sink)
 
 
+	def mute_nodes_above(self, node):
+		pass
+
+
+	def unmute_nodes_above(self, node):
+		pass
+
 
 	### Public interface ###
 	########################
@@ -126,6 +136,13 @@ class Farm:
 		node = self.nodes[level - 1][row - 1]
 		return node
 
+
+	# 
+	def empty_bed(self, node):
+		# set node to the current tank
+		# mute all beds above node
+		# return True/False to the client(currently its the farm_controller)
+		pass
 
 # farm = Farm(4, 4)
 # input('printing the farm blueprint...')
