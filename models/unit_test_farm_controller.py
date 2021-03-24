@@ -2,6 +2,10 @@ from farm_controller import FarmController
 from communicator import Communicator
 from farm import Farm
 
+
+# to create unit tests for farm_controller it's recommended to use MockClient
+# use it as follow:  create a Communicator object using a MockClient object
+# use the Communicator object when creating a FarmController object
 class MockClient:
 
 

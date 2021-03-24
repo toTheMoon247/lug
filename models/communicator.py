@@ -59,8 +59,10 @@ class Communicator:
 		return f'bed-{bed_label}'
 
 
+	# TODO: Outsource the client to a new class
 	def open_valve(self, bed_label, valve_state):
 		full_label = self.set_bed_full_label(bed_label) 
+		self.client.publish(f"sam/{bed_label}/valve/set", valve_state)
 		return self.client.publish(full_label, valve_state)
 
 	################# PRIVATE ##########################
